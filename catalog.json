@@ -19,6 +19,10 @@
         {
           "path": "bazi/tiaohou.json",
           "provenance": "packaged"
+        },
+        {
+          "path": "bazi/entries/qiongtong.json",
+          "provenance": "extracted"
         }
       ],
       "ref": "https://zh.wikisource.org/wiki/%E7%A9%B7%E9%80%9A%E5%AF%B6%E9%91%91",
