@@ -1,0 +1,30 @@
+name: 校验数据
+
+# 三种情形都要查：
+#   改了本仓的数据；
+#   每天定时一次——tianzhi-core 发了新版而阈值有变，本仓不会收到任何通知，
+#   只能自己定期去对；
+#   手动触发，供 core 那边发版后立即核验。
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 20 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      # 装最新的正式版，而不是锁版本：要查的正是「core 变了而本仓没跟上」
+      - run: pip install --upgrade tianzhi-core
+      - run: python tools/check.py
