@@ -1,0 +1,130 @@
+{
+  "version": 1,
+  "updated": "2026-09-24",
+  "note": "PDF 不在仓库里，见 README 的 Release 说明。收录标准同见 README。",
+  "books": [
+    {
+      "slug": "qiongtong",
+      "title": "窮通寶鑑",
+      "alias": [
+        "欄江網",
+        "造化元鑰"
+      ],
+      "dynasty": "明",
+      "author": "余春臺 輯",
+      "anchors": "gan-month",
+      "summary": "十天干乘十二月令共一百二十格，讲一年寒暖燥湿之下该取什么字。算法里的调候用神表逐格出自此书。",
+      "intro": "",
+      "excerpts": "texts/qiongtong.json",
+      "pdf": {
+        "release": "",
+        "asset": "",
+        "bytes": 0,
+        "pages": 0,
+        "source": "",
+        "license": "PD-old",
+        "ready": false
+      }
+    },
+    {
+      "slug": "ziping",
+      "title": "子平真詮",
+      "alias": [],
+      "dynasty": "清",
+      "author": "沈孝瞻",
+      "anchors": "geju",
+      "summary": "以月令用神立格，把格局的成与败讲成一套可以推的规则。算法里的格局判定出自此书。",
+      "intro": "",
+      "excerpts": "texts/ziping.json",
+      "pdf": {
+        "release": "",
+        "asset": "",
+        "bytes": 0,
+        "pages": 0,
+        "source": "",
+        "license": "PD-old",
+        "ready": false
+      }
+    },
+    {
+      "slug": "ditian",
+      "title": "滴天髓",
+      "alias": [],
+      "dynasty": "明",
+      "author": "劉基",
+      "anchors": "chapter",
+      "summary": "论五行生克制化之理，文辞极简。算法里日主强弱与通关取用的思路出自此书。",
+      "intro": "",
+      "excerpts": "texts/ditian.json",
+      "pdf": {
+        "release": "",
+        "asset": "",
+        "bytes": 0,
+        "pages": 0,
+        "source": "",
+        "license": "PD-old",
+        "ready": false
+      }
+    },
+    {
+      "slug": "shenfeng",
+      "title": "神峰通考",
+      "alias": [],
+      "dynasty": "明",
+      "author": "張楠",
+      "anchors": "chapter",
+      "summary": "以病药之说立论，专驳当时流行的伪法。",
+      "intro": "",
+      "excerpts": "texts/shenfeng.json",
+      "pdf": {
+        "release": "",
+        "asset": "",
+        "bytes": 0,
+        "pages": 0,
+        "source": "",
+        "license": "PD-old",
+        "ready": false
+      }
+    },
+    {
+      "slug": "sanming",
+      "title": "三命通會",
+      "alias": [],
+      "dynasty": "明",
+      "author": "萬民英",
+      "anchors": "chapter",
+      "summary": "术数的类书，神煞、纳音、诸家旧说汇于一编。算法里神煞的定义多出自此书。",
+      "intro": "",
+      "excerpts": "texts/sanming.json",
+      "pdf": {
+        "release": "",
+        "asset": "",
+        "bytes": 0,
+        "pages": 0,
+        "source": "",
+        "license": "PD-old",
+        "ready": false
+      }
+    },
+    {
+      "slug": "yuanhai",
+      "title": "淵海子平",
+      "alias": [],
+      "dynasty": "宋",
+      "author": "徐子平",
+      "anchors": "chapter",
+      "summary": "现存最早的子平体系专书，后世诸书多由此衍出。",
+      "intro": "",
+      "excerpts": "texts/yuanhai.json",
+      "pdf": {
+        "release": "",
+        "asset": "",
+        "bytes": 0,
+        "pages": 0,
+        "source": "",
+        "license": "PD-old",
+        "ready": false
+      }
+    }
+  ]
+}
