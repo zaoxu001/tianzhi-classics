@@ -1,7 +1,7 @@
 {
   "version": 1,
   "updated": "2026-09-24",
-  "note": "tables 为该书整理出的数据文件；ref 为原文链接；ref_anchors 指向拼接锚点的方法，有此字段者可链到条目一级，无者只能链到全书。路径相对本仓根目录。",
+  "note": "tables 为该书整理出的数据文件，provenance 记其来路，释义见顶层 provenance；ref 为原文链接，ref_anchors 指向拼接锚点的方法。路径相对本仓根目录。",
   "books": [
     {
       "slug": "qiongtong",
@@ -16,7 +16,10 @@
       "anchors": "gan-month",
       "summary": "以十天干配十二月令，列一百二十格调候取用，论四时五行之衰旺喜忌。",
       "tables": [
-        "bazi/tiaohou.json"
+        {
+          "path": "bazi/tiaohou.json",
+          "provenance": "packaged"
+        }
       ],
       "ref": "https://zh.wikisource.org/wiki/%E7%A9%B7%E9%80%9A%E5%AF%B6%E9%91%91",
       "ref_anchors": "bazi/ref-anchors.json"
@@ -33,7 +36,10 @@
       "anchors": "gan-month",
       "summary": "于同样一百二十格给出喜忌天干，并附大运地支的顺逆。",
       "tables": [
-        "bazi/jinbuhuan.json"
+        {
+          "path": "bazi/jinbuhuan.json",
+          "provenance": "packaged"
+        }
       ],
       "ref": "",
       "ref_anchors": ""
@@ -48,8 +54,14 @@
       "anchors": "chapter",
       "summary": "以月令用神立格，论格局之成败与顺用逆用。",
       "tables": [
-        "bazi/geju-ops.json",
-        "bazi/geju-alias.json"
+        {
+          "path": "bazi/geju-ops.json",
+          "provenance": "derived"
+        },
+        {
+          "path": "bazi/geju-alias.json",
+          "provenance": "derived"
+        }
       ],
       "ref": "https://zh.wikisource.org/wiki/%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE",
       "ref_anchors": ""
@@ -64,7 +76,10 @@
       "anchors": "chapter",
       "summary": "论五行生克制化之理，兼及从象、化象、通关。",
       "tables": [
-        "bazi/ditian-rules.json"
+        {
+          "path": "bazi/ditian-rules.json",
+          "provenance": "modeled"
+        }
       ],
       "ref": "https://zh.wikisource.org/wiki/%E6%BB%B4%E5%A4%A9%E9%AB%93",
       "ref_anchors": ""
@@ -79,7 +94,10 @@
       "anchors": "chapter",
       "summary": "以病药之说立论。",
       "tables": [
-        "bazi/shenfeng-rules.json"
+        {
+          "path": "bazi/shenfeng-rules.json",
+          "provenance": "modeled"
+        }
       ],
       "ref": "",
       "ref_anchors": ""
@@ -94,7 +112,10 @@
       "anchors": "chapter",
       "summary": "术数类书，神煞、纳音、诸家旧说汇于一编。",
       "tables": [
-        "bazi/shensha-tianyi.json"
+        {
+          "path": "bazi/shensha-tianyi.json",
+          "provenance": "derived"
+        }
       ],
       "ref": "https://zh.wikisource.org/wiki/%E4%B8%89%E5%91%BD%E9%80%9A%E6%9C%83",
       "ref_anchors": ""
@@ -109,7 +130,10 @@
       "anchors": "chapter",
       "summary": "现存最早的子平体系专书。",
       "tables": [
-        "bazi/shensha-wenchang.json"
+        {
+          "path": "bazi/shensha-wenchang.json",
+          "provenance": "derived"
+        }
       ],
       "ref": "https://zh.wikisource.org/wiki/%E6%B7%B5%E6%B5%B7%E5%AD%90%E5%B9%B3",
       "ref_anchors": ""
@@ -124,8 +148,14 @@
       "anchors": "chapter",
       "summary": "清代官修的选择之书，神煞起例多以此为准。",
       "tables": [
-        "bazi/shensha-tiande.json",
-        "bazi/shensha-yuede.json"
+        {
+          "path": "bazi/shensha-tiande.json",
+          "provenance": "derived"
+        },
+        {
+          "path": "bazi/shensha-yuede.json",
+          "provenance": "derived"
+        }
       ],
       "ref": "https://zh.wikisource.org/wiki/%E5%8D%94%E7%B4%80%E8%BE%A8%E6%96%B9%E6%9B%B8",
       "ref_anchors": ""
@@ -166,9 +196,24 @@
   "foundation": {
     "note": "干支体系的基础对应关系，为诸书通用，非某一部所独出；人元司令分日表各家天数有异，此为其中一种。",
     "tables": [
-      "bazi/ganzhi.json",
-      "bazi/siling.json",
-      "bazi/shensha-lushen.json"
+      {
+        "path": "bazi/ganzhi.json",
+        "provenance": "derived"
+      },
+      {
+        "path": "bazi/siling.json",
+        "provenance": "packaged"
+      },
+      {
+        "path": "bazi/shensha-lushen.json",
+        "provenance": "derived"
+      }
     ]
+  },
+  "provenance": {
+    "extracted": "自原书文本逐条提取、清洗、标注条目位置。尚无此类数据。",
+    "packaged": "库中随包的既有数据，提取与校勘过程未见记载，未回原书逐条复核。",
+    "derived": "自算法实现的常量导出。常量的注释标明典籍出处，部分引有原文成句。",
+    "modeled": "自算法实现的判断逻辑结构化而来，非自原书文本提取。所载为该实现如何理解这条法则，不等同于原书论述——原书于此另有大段论说与例证，未纳入。"
   }
 }
