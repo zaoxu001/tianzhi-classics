@@ -5,6 +5,7 @@
   "books": [
     {
       "slug": "qiongtong",
+      "module": "bazi",
       "title": "窮通寶鑑",
       "alias": [
         "欄江網",
@@ -28,11 +29,12 @@
     },
     {
       "slug": "ziping",
+      "module": "bazi",
       "title": "子平真詮",
       "alias": [],
       "dynasty": "清",
       "author": "沈孝瞻",
-      "anchors": "geju",
+      "anchors": "chapter",
       "summary": "以月令用神立格，把格局的成与败讲成一套可以推的规则。算法里的格局判定出自此书。",
       "intro": "",
       "excerpts": "texts/ziping.json",
@@ -48,6 +50,7 @@
     },
     {
       "slug": "ditian",
+      "module": "bazi",
       "title": "滴天髓",
       "alias": [],
       "dynasty": "明",
@@ -68,6 +71,7 @@
     },
     {
       "slug": "shenfeng",
+      "module": "bazi",
       "title": "神峰通考",
       "alias": [],
       "dynasty": "明",
@@ -88,6 +92,7 @@
     },
     {
       "slug": "sanming",
+      "module": "bazi",
       "title": "三命通會",
       "alias": [],
       "dynasty": "明",
@@ -108,6 +113,7 @@
     },
     {
       "slug": "yuanhai",
+      "module": "bazi",
       "title": "淵海子平",
       "alias": [],
       "dynasty": "宋",
@@ -125,6 +131,38 @@
         "license": "PD-old",
         "ready": false
       }
+    }
+  ],
+  "modules": [
+    {
+      "key": "bazi",
+      "name": "八字",
+      "ready": true
+    },
+    {
+      "key": "liuren",
+      "name": "六壬",
+      "ready": false
+    },
+    {
+      "key": "qimen",
+      "name": "奇门",
+      "ready": false
+    },
+    {
+      "key": "ziwei",
+      "name": "紫微",
+      "ready": false
+    },
+    {
+      "key": "liuyao",
+      "name": "六爻",
+      "ready": false
+    },
+    {
+      "key": "meihua",
+      "name": "梅花",
+      "ready": false
     }
   ]
 }
