@@ -1,7 +1,7 @@
 {
   "version": 1,
   "updated": "2026-09-24",
-  "note": "规则表见各书 rules 字段，随 tianzhi-core 分发；ref 为原文参考链接，本仓不转载原文。",
+  "note": "tables 为该书整理出的数据文件，路径相对本仓根目录。ref 为原文参考链接，本仓不转载原文。",
   "books": [
     {
       "slug": "qiongtong",
@@ -15,7 +15,9 @@
       "author": "余春臺 輯",
       "anchors": "gan-month",
       "summary": "以十天干配十二月令，列一百二十格调候取用，论四时五行之衰旺喜忌。",
-      "rules": "tianzhi_core/data/tiaohou.json",
+      "tables": [
+        "bazi/tiaohou.json"
+      ],
       "ref": "https://zh.wikisource.org/wiki/穷通宝鉴"
     },
     {
@@ -29,7 +31,9 @@
       "author": "佚名",
       "anchors": "gan-month",
       "summary": "于同样一百二十格给出喜忌天干，并附大运地支的顺逆。",
-      "rules": "tianzhi_core/data/jinbuhuan.json",
+      "tables": [
+        "bazi/jinbuhuan.json"
+      ],
       "ref": ""
     },
     {
@@ -41,7 +45,10 @@
       "author": "沈孝瞻",
       "anchors": "chapter",
       "summary": "以月令用神立格，论格局之成败与顺用逆用。",
-      "rules": "",
+      "tables": [
+        "bazi/geju-ops.json",
+        "bazi/geju-alias.json"
+      ],
       "ref": "https://zh.wikisource.org/wiki/子平真詮"
     },
     {
@@ -53,7 +60,7 @@
       "author": "劉基",
       "anchors": "chapter",
       "summary": "论五行生克制化之理，兼及从象、化象、通关。",
-      "rules": "",
+      "tables": [],
       "ref": "https://zh.wikisource.org/wiki/滴天髓"
     },
     {
@@ -65,7 +72,7 @@
       "author": "張楠",
       "anchors": "chapter",
       "summary": "以病药之说立论。",
-      "rules": "",
+      "tables": [],
       "ref": ""
     },
     {
@@ -77,7 +84,9 @@
       "author": "萬民英",
       "anchors": "chapter",
       "summary": "术数类书，神煞、纳音、诸家旧说汇于一编。",
-      "rules": "",
+      "tables": [
+        "bazi/shensha-tianyi.json"
+      ],
       "ref": "https://zh.wikisource.org/wiki/三命通會"
     },
     {
@@ -89,8 +98,25 @@
       "author": "徐子平",
       "anchors": "chapter",
       "summary": "现存最早的子平体系专书。",
-      "rules": "",
+      "tables": [
+        "bazi/shensha-wenchang.json"
+      ],
       "ref": "https://zh.wikisource.org/wiki/淵海子平"
+    },
+    {
+      "slug": "xieji",
+      "module": "bazi",
+      "title": "協紀辨方書",
+      "alias": [],
+      "dynasty": "清",
+      "author": "允祿 等 奉敕撰",
+      "anchors": "chapter",
+      "summary": "清代官修的选择之书，神煞起例多以此为准。",
+      "tables": [
+        "bazi/shensha-tiande.json",
+        "bazi/shensha-yuede.json"
+      ],
+      "ref": "https://zh.wikisource.org/wiki/協紀辨方書"
     }
   ],
   "modules": [
@@ -124,5 +150,13 @@
       "name": "梅花",
       "ready": false
     }
-  ]
+  ],
+  "foundation": {
+    "note": "干支体系的基础对应关系，为诸书通用，非某一部所独出；人元司令分日表各家天数有异，此为其中一种。",
+    "tables": [
+      "bazi/ganzhi.json",
+      "bazi/siling.json",
+      "bazi/shensha-lushen.json"
+    ]
+  }
 }
