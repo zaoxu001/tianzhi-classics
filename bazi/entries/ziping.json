@@ -13,6 +13,19 @@
       "leaf": "底本葉次",
       "collation": "与算法注释所引文字的异同",
       "quote": "该格所本的原文一句"
+    },
+    "rights": {
+      "original": "清·沈孝瞻撰，序署乾隆四十一年（1776）。作者逝世逾二百年，早入公有领域。",
+      "edition": "民國萬海世界圖書館發行之排印本，属法人作品。依《中华人民共和国著作权法》（2020年11月11日修正），法人作品自首次发表后五十年进入公有领域；民国出版物最晚至1949年，加五十年，1999年已届满。",
+      "scan": "影印件本身为机械扫描，不产生新的著作权。Wikimedia Commons 就此挂 PD-scan：「a mere mechanical scan or photocopy of a public domain original… no copyright protection can be expected to arise」。",
+      "commons_tags": [
+        "PD-scan",
+        "PD-China",
+        "PD-old",
+        "PD-Art"
+      ],
+      "used": "仅摘录八句原文（各十余字）用以标注出处；今译系本站所撰；全书未转载。",
+      "checked": "2026-09-24"
     }
   },
   "entries": {
