@@ -97,6 +97,21 @@ THRESHOLDS: dict[str, list[tuple[str, str, str, str]]] = {
 }
 
 
+def check_anchors() -> list[str]:
+    """原文锚点表里的干支五行须与库一致，否则拼出来的锚点会指错地方。"""
+    from tianzhi_core.core import ganzhi
+
+    path = ROOT / "bazi/ref-anchors.json"
+    if not path.exists():
+        return ["bazi/ref-anchors.json：本仓缺这个文件"]
+    with path.open(encoding="utf-8") as f:
+        doc = json.load(f)
+    got = doc.get("qiongtong", {}).get("wuxing_of_gan")
+    if got != dict(ganzhi.GAN_WUXING):
+        return ["bazi/ref-anchors.json：wuxing_of_gan 与 ganzhi.GAN_WUXING 不一致"]
+    return []
+
+
 def check_thresholds() -> list[str]:
     from importlib import import_module
 
@@ -135,9 +150,11 @@ def main() -> int:
             bad.append(f"{rel}：与 tianzhi-core 不一致")
 
     bad += check_thresholds()
+    bad += check_anchors()
 
     # 反过来也查一遍：本仓有、校验清单里没有的文件，说明清单忘了更新
-    listed = {ROOT / r for r in want} | {ROOT / r for r in THRESHOLDS}
+    listed = ({ROOT / r for r in want} | {ROOT / r for r in THRESHOLDS}
+              | {ROOT / "bazi/ref-anchors.json"})
     for path in sorted((ROOT / "bazi").glob("*.json")):
         if path not in listed:
             bad.append(f"bazi/{path.name}：不在校验清单里，tools/check.py 忘了更新")

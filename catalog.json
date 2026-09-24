@@ -1,7 +1,7 @@
 {
   "version": 1,
   "updated": "2026-09-24",
-  "note": "tables 为该书整理出的数据文件，路径相对本仓根目录。ref 为原文参考链接，本仓不转载原文。",
+  "note": "tables 为该书整理出的数据文件；ref 为原文链接；ref_anchors 指向拼接锚点的方法，有此字段者可链到条目一级，无者只能链到全书。路径相对本仓根目录。",
   "books": [
     {
       "slug": "qiongtong",
@@ -18,7 +18,8 @@
       "tables": [
         "bazi/tiaohou.json"
       ],
-      "ref": "https://zh.wikisource.org/wiki/穷通宝鉴"
+      "ref": "https://zh.wikisource.org/wiki/%E7%A9%B7%E9%80%9A%E5%AF%B6%E9%91%91",
+      "ref_anchors": "bazi/ref-anchors.json"
     },
     {
       "slug": "jinbuhuan",
@@ -34,7 +35,8 @@
       "tables": [
         "bazi/jinbuhuan.json"
       ],
-      "ref": ""
+      "ref": "",
+      "ref_anchors": ""
     },
     {
       "slug": "ziping",
@@ -49,7 +51,8 @@
         "bazi/geju-ops.json",
         "bazi/geju-alias.json"
       ],
-      "ref": "https://zh.wikisource.org/wiki/子平真詮"
+      "ref": "https://zh.wikisource.org/wiki/%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE",
+      "ref_anchors": ""
     },
     {
       "slug": "ditian",
@@ -63,7 +66,8 @@
       "tables": [
         "bazi/ditian-rules.json"
       ],
-      "ref": "https://zh.wikisource.org/wiki/滴天髓"
+      "ref": "https://zh.wikisource.org/wiki/%E6%BB%B4%E5%A4%A9%E9%AB%93",
+      "ref_anchors": ""
     },
     {
       "slug": "shenfeng",
@@ -77,7 +81,8 @@
       "tables": [
         "bazi/shenfeng-rules.json"
       ],
-      "ref": ""
+      "ref": "",
+      "ref_anchors": ""
     },
     {
       "slug": "sanming",
@@ -91,7 +96,8 @@
       "tables": [
         "bazi/shensha-tianyi.json"
       ],
-      "ref": "https://zh.wikisource.org/wiki/三命通會"
+      "ref": "https://zh.wikisource.org/wiki/%E4%B8%89%E5%91%BD%E9%80%9A%E6%9C%83",
+      "ref_anchors": ""
     },
     {
       "slug": "yuanhai",
@@ -105,7 +111,8 @@
       "tables": [
         "bazi/shensha-wenchang.json"
       ],
-      "ref": "https://zh.wikisource.org/wiki/淵海子平"
+      "ref": "https://zh.wikisource.org/wiki/%E6%B7%B5%E6%B5%B7%E5%AD%90%E5%B9%B3",
+      "ref_anchors": ""
     },
     {
       "slug": "xieji",
@@ -120,7 +127,8 @@
         "bazi/shensha-tiande.json",
         "bazi/shensha-yuede.json"
       ],
-      "ref": "https://zh.wikisource.org/wiki/協紀辨方書"
+      "ref": "https://zh.wikisource.org/wiki/%E5%8D%94%E7%B4%80%E8%BE%A8%E6%96%B9%E6%9B%B8",
+      "ref_anchors": ""
     }
   ],
   "modules": [

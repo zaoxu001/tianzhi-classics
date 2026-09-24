@@ -16,22 +16,43 @@
 
 | 典籍 | 时代 · 作者 | 提取内容 | 条目 | 文件 |
 | --- | --- | --- | --- | --- |
-| 窮通寶鑑（一名欄江網、造化元鑰） | 明 · 余春臺 輯 | 调候取用：日干 × 月令 | 120 | `bazi/tiaohou.json` |
+| [窮通寶鑑（一名欄江網、造化元鑰）](https://zh.wikisource.org/wiki/%E7%A9%B7%E9%80%9A%E5%AF%B6%E9%91%91) | 明 · 余春臺 輯 | 调候取用：日干 × 月令 | 120 | `bazi/tiaohou.json` |
 | 金不換大運 | 清 · 佚名 | 喜忌天干、大运地支顺逆：日干 × 月令 | 120 | `bazi/jinbuhuan.json` |
-| 子平真詮 | 清 · 沈孝瞻 | 八格的顺用逆用、相神与忌神 | 8 | `bazi/geju-ops.json` |
-| 滴天髓 | 明 · 劉基 | 从象、化象、通关的判别条件与阈值 | 3 | `bazi/ditian-rules.json` |
+| [子平真詮](https://zh.wikisource.org/wiki/%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE) | 清 · 沈孝瞻 | 八格的顺用逆用、相神与忌神 | 8 | `bazi/geju-ops.json` |
+| [滴天髓](https://zh.wikisource.org/wiki/%E6%BB%B4%E5%A4%A9%E9%AB%93) | 明 · 劉基 | 从象、化象、通关的判别条件与阈值 | 3 | `bazi/ditian-rules.json` |
 | 神峰通考 | 明 · 張楠 | 病药的判别条件与阈值 | 1 | `bazi/shenfeng-rules.json` |
-| 三命通會 | 明 · 萬民英 | 天乙贵人起例 | 10 | `bazi/shensha-tianyi.json` |
-| 淵海子平 | 宋 · 徐子平 | 文昌贵人起例 | 10 | `bazi/shensha-wenchang.json` |
-| 協紀辨方書 | 清 · 允祿 等 奉敕撰 | 天德、月德贵人起例 | 24 | `bazi/shensha-tiande.json`<br>`bazi/shensha-yuede.json` |
+| [三命通會](https://zh.wikisource.org/wiki/%E4%B8%89%E5%91%BD%E9%80%9A%E6%9C%83) | 明 · 萬民英 | 天乙贵人起例 | 10 | `bazi/shensha-tianyi.json` |
+| [淵海子平](https://zh.wikisource.org/wiki/%E6%B7%B5%E6%B5%B7%E5%AD%90%E5%B9%B3) | 宋 · 徐子平 | 文昌贵人起例 | 10 | `bazi/shensha-wenchang.json` |
+| [協紀辨方書](https://zh.wikisource.org/wiki/%E5%8D%94%E7%B4%80%E8%BE%A8%E6%96%B9%E6%9B%B8) | 清 · 允祿 等 奉敕撰 | 天德、月德贵人起例 | 24 | `bazi/shensha-tiande.json`<br>`bazi/shensha-yuede.json` |
 
 另有干支体系的基础对应关系，为诸书通用，非某一部所独出：六十甲子、干支五行、
 地支藏干、十二长生、天干五合、地支六合六冲六害、阳刃、旺相休囚死（`bazi/ganzhi.json`），
 禄神起例（`bazi/shensha-lushen.json`），人元司令分日（`bazi/siling.json`，各家
 天数有异，此为其中一种）。
 
-均为公有领域古籍。仅提取规则，不转载原文；原文参考链接见 `catalog.json` 的
-`ref` 字段。
+均为公有领域古籍。书名即原文链接，指向维基文库；未附链接者（金不换大运、神峰通考）
+暂未找到可靠的公开电子文本。
+
+## 链回原文
+
+出处标签指到条目一级，原文链接也应当指到同一级，否则「可查证」只是说说而已。
+
+`bazi/ref-anchors.json` 给出拼接方法。以《穷通宝鉴》为例，该版本的章节分到季为止，
+无分月的标题，故一个锚点统辖一季三个月：
+
+```
+锚点 = {季}{日干}{日干五行}
+
+辛日午月  午属三夏，辛属金  →  三夏辛金
+甲日寅月  寅属三春，甲属木  →  三春甲木
+
+https://zh.wikisource.org/wiki/穷通宝鉴#三夏辛金
+```
+
+文件内附月支到季、天干到五行的映射表。一百二十格拼出的锚点已逐个比对页面实有的
+`id`，无一落空。
+
+其余各书的锚点粒度尚未逐一核验，只给全书链接。
 
 ## 目录
 
