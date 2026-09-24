@@ -60,7 +60,9 @@
       "author": "劉基",
       "anchors": "chapter",
       "summary": "论五行生克制化之理，兼及从象、化象、通关。",
-      "tables": [],
+      "tables": [
+        "bazi/ditian-rules.json"
+      ],
       "ref": "https://zh.wikisource.org/wiki/滴天髓"
     },
     {
@@ -72,7 +74,9 @@
       "author": "張楠",
       "anchors": "chapter",
       "summary": "以病药之说立论。",
-      "tables": [],
+      "tables": [
+        "bazi/shenfeng-rules.json"
+      ],
       "ref": ""
     },
     {

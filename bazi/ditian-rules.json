@@ -1,0 +1,109 @@
+{
+  "从象": {
+    "source": "滴天髓·从象",
+    "quote": "从得真者只论从，从神又有吉和凶。",
+    "applies_to": "取用",
+    "rules": [
+      {
+        "name": "从弱",
+        "when": [
+          "同党占比低于 follow_weak_ratio",
+          "日主无强根"
+        ],
+        "then": "不扶日主，从其旺神（取泄、耗、克日主者中最旺的一行）"
+      },
+      {
+        "name": "专旺",
+        "when": [
+          "同党占比高于 follow_strong_ratio",
+          "日主有强根"
+        ],
+        "then": "顺其势，以日主本行为用"
+      }
+    ],
+    "thresholds": {
+      "follow_weak_ratio": {
+        "value": 0.12,
+        "from": "本包取值，可调"
+      },
+      "follow_strong_ratio": {
+        "value": 0.88,
+        "from": "本包取值，可调"
+      }
+    }
+  },
+  "化象": {
+    "source": "滴天髓·化象",
+    "quote": "化得真者只论化，化神还有几般话。",
+    "applies_to": "合化",
+    "rules": [
+      {
+        "name": "化得成",
+        "when": [
+          "月令为化神本行或生化神",
+          "化神占全盘分量不低于 share_yes"
+        ],
+        "then": "作化气论"
+      },
+      {
+        "name": "化不成",
+        "when": [
+          "月令不帮化神",
+          "月令克化神，或化神占比不高于 share_no"
+        ],
+        "then": "不作化论"
+      },
+      {
+        "name": "未定",
+        "when": [
+          "以上二者皆不满足"
+        ],
+        "then": "不下判断（返回 null）——拿不准不武断"
+      }
+    ],
+    "thresholds": {
+      "share_yes": {
+        "value": 0.28,
+        "from": "本包取值，可调"
+      },
+      "share_no": {
+        "value": 0.1,
+        "from": "本包取值，可调"
+      }
+    }
+  },
+  "通关": {
+    "source": "滴天髓·通关",
+    "quote": "",
+    "quote_note": "算法依此篇之意立条，未引原文成句。",
+    "applies_to": "取用",
+    "rules": [
+      {
+        "name": "通关",
+        "when": [
+          "两行相战",
+          "各自占全盘份额不低于 min_share",
+          "两行强弱之比不超过 balance_max"
+        ],
+        "then": "取居中一行，泄强生弱"
+      },
+      {
+        "name": "不通关",
+        "when": [
+          "一边压倒另一边（强弱之比超出 balance_max）"
+        ],
+        "then": "改用病药，不作通关"
+      }
+    ],
+    "thresholds": {
+      "min_share": {
+        "value": 0.22,
+        "from": "本包取值，可调"
+      },
+      "balance_max": {
+        "value": 1.1,
+        "from": "本包取值，可调；原取 1.20 过松，已收紧"
+      }
+    }
+  }
+}

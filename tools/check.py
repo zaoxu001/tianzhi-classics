@@ -7,6 +7,10 @@
 
 三个随包文件逐字节比对；其余几张表是从算法的常量导出的，这里重新导出再比对。
 
+取用法则那两份（ditian-rules、shenfeng-rules）的条文是人写的，机器无从比对，
+但里面的阈值必须跟代码一致——阈值一漂，数据上写的判据就不是算法实际在用的判据。
+所以逐个核对 thresholds 里的 value。
+
     pip install tianzhi-core
     python tools/check.py
 
@@ -77,6 +81,41 @@ def expected() -> dict[str, object]:
     return out
 
 
+#: 取用法则里的阈值 → 代码中的常量。阈值是算法的判据，写进数据就得跟代码同源。
+THRESHOLDS: dict[str, list[tuple[str, str, str, str]]] = {
+    "bazi/ditian-rules.json": [
+        ("从象", "follow_weak_ratio", "yongshen", "FOLLOW_WEAK_RATIO"),
+        ("从象", "follow_strong_ratio", "yongshen", "FOLLOW_STRONG_RATIO"),
+        ("化象", "share_yes", "interact", "TRANSFORM_SHARE_YES"),
+        ("化象", "share_no", "interact", "TRANSFORM_SHARE_NO"),
+        ("通关", "min_share", "yongshen", "TONGGUAN_MIN_SHARE"),
+        ("通关", "balance_max", "yongshen", "TONGGUAN_BALANCE_MAX"),
+    ],
+    "bazi/shenfeng-rules.json": [
+        ("病药", "bing_margin", "yongshen", "BING_MARGIN"),
+    ],
+}
+
+
+def check_thresholds() -> list[str]:
+    from importlib import import_module
+
+    bad = []
+    for rel, items in THRESHOLDS.items():
+        path = ROOT / rel
+        if not path.exists():
+            bad.append(f"{rel}：本仓缺这个文件")
+            continue
+        with path.open(encoding="utf-8") as f:
+            doc = json.load(f)
+        for rule, key, module, const in items:
+            got = doc.get(rule, {}).get("thresholds", {}).get(key, {}).get("value")
+            want = getattr(import_module(f"tianzhi_core.bazi.{module}"), const)
+            if got != want:
+                bad.append(f"{rel} {rule}.{key}：数据为 {got}，代码 {const} 为 {want}")
+    return bad
+
+
 def main() -> int:
     try:
         want = expected()
@@ -95,8 +134,10 @@ def main() -> int:
         if got != value:
             bad.append(f"{rel}：与 tianzhi-core 不一致")
 
+    bad += check_thresholds()
+
     # 反过来也查一遍：本仓有、校验清单里没有的文件，说明清单忘了更新
-    listed = {ROOT / r for r in want}
+    listed = {ROOT / r for r in want} | {ROOT / r for r in THRESHOLDS}
     for path in sorted((ROOT / "bazi").glob("*.json")):
         if path not in listed:
             bad.append(f"bazi/{path.name}：不在校验清单里，tools/check.py 忘了更新")
@@ -106,7 +147,8 @@ def main() -> int:
         for line in bad:
             print("  " + line, file=sys.stderr)
         return 1
-    print(f"一致，共 {len(want)} 个文件")
+    print(f"一致，共 {len(want) + len(THRESHOLDS)} 个文件，"
+          f"{sum(len(v) for v in THRESHOLDS.values())} 项阈值")
     return 0
 
 

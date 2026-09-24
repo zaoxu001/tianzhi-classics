@@ -19,6 +19,8 @@
 | 窮通寶鑑（一名欄江網、造化元鑰） | 明 · 余春臺 輯 | 调候取用：日干 × 月令 | 120 | `bazi/tiaohou.json` |
 | 金不換大運 | 清 · 佚名 | 喜忌天干、大运地支顺逆：日干 × 月令 | 120 | `bazi/jinbuhuan.json` |
 | 子平真詮 | 清 · 沈孝瞻 | 八格的顺用逆用、相神与忌神 | 8 | `bazi/geju-ops.json` |
+| 滴天髓 | 明 · 劉基 | 从象、化象、通关的判别条件与阈值 | 3 | `bazi/ditian-rules.json` |
+| 神峰通考 | 明 · 張楠 | 病药的判别条件与阈值 | 1 | `bazi/shenfeng-rules.json` |
 | 三命通會 | 明 · 萬民英 | 天乙贵人起例 | 10 | `bazi/shensha-tianyi.json` |
 | 淵海子平 | 宋 · 徐子平 | 文昌贵人起例 | 10 | `bazi/shensha-wenchang.json` |
 | 協紀辨方書 | 清 · 允祿 等 奉敕撰 | 天德、月德贵人起例 | 24 | `bazi/shensha-tiande.json`<br>`bazi/shensha-yuede.json` |
@@ -93,6 +95,40 @@ tools/check.py      校验本仓数据与 tianzhi-core 一致
 
 `bazi/geju-alias.json` 为格名别称至正名的映射。
 
+### 取用法则 `bazi/ditian-rules.json` `bazi/shenfeng-rules.json`
+
+并非所有典籍的内容都是查表形态。《滴天髓》论从象、化象、通关，《神峰通考》论
+病药，讲的是「什么条件下该怎么取」，条目形如条件与动作。
+
+```json
+{ "从象": {
+    "source": "滴天髓·从象",
+    "quote": "从得真者只论从，从神又有吉和凶。",
+    "applies_to": "取用",
+    "rules": [
+      { "name": "从弱",
+        "when": ["同党占比低于 follow_weak_ratio", "日主无强根"],
+        "then": "不扶日主，从其旺神（取泄、耗、克日主者中最旺的一行）" }
+    ],
+    "thresholds": {
+      "follow_weak_ratio": { "value": 0.12, "from": "本包取值，可调" }
+    } } }
+```
+
+| 字段 | 类型 | 含义 |
+| --- | --- | --- |
+| `source` | string | 出处 |
+| `quote` | string | 原文成句；未引原文者为空，另以 `quote_note` 说明 |
+| `applies_to` | string | 该法则作用于哪一环 |
+| `rules[].when` | string[] | 全部成立方才适用 |
+| `rules[].then` | string | 成立后如何取用 |
+| `thresholds` | object | 判别所用的数值 |
+| `thresholds.*.from` | string | 该数值的来历。标「本包取值」者为工程取值，非典籍所定 |
+
+典籍言理不言数，落到可计算的程序上必须给出具体阈值。`from` 字段把两者分开：
+哪些是书上说的，哪些是本包定的，不相混淆。这些阈值与代码同源，由 `tools/check.py`
+核对。
+
 ### 神煞起例 `bazi/shensha-*.json`
 
 以所查之干或支为键，落处为值。
@@ -158,8 +194,11 @@ tiaohou.climate_gods("辛", "午")
 python tools/check.py
 ```
 
-随包的三份逐字节比对；其余几张表由算法常量导出，脚本重新导出后比对。一致则
-退出码 0，否则逐项列出差异。
+随包的三份逐字节比对；其余几张表由算法常量导出，脚本重新导出后比对；取用法则
+两份的条文是人写的，机器无从比对，但其中的阈值逐项核对——阈值一漂，数据上写的
+判据就不是算法实际在用的判据。脚本并会反查本仓是否有文件漏在清单之外。
+
+一致则退出码 0，否则逐项列出差异。
 
 ## 许可
 
