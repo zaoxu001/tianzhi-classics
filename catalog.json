@@ -1,7 +1,7 @@
 {
   "version": 1,
   "updated": "2026-09-24",
-  "note": "本仓收的是从典籍提取的结构化规则表（rules），不是原文。ref 是原文的参考链接，只引用不转载。",
+  "note": "规则表见各书 rules 字段，随 tianzhi-core 分发；ref 为原文参考链接，本仓不转载原文。",
   "books": [
     {
       "slug": "qiongtong",
@@ -14,7 +14,7 @@
       "dynasty": "明",
       "author": "余春臺 輯",
       "anchors": "gan-month",
-      "summary": "十天干乘十二月令共一百二十格，讲一年寒暖燥湿之下该取什么字。算法里的调候用神表逐格出自此书。",
+      "summary": "以十天干配十二月令，列一百二十格调候取用，论四时五行之衰旺喜忌。",
       "rules": "tianzhi_core/data/tiaohou.json",
       "ref": "https://zh.wikisource.org/wiki/穷通宝鉴"
     },
@@ -28,7 +28,7 @@
       "dynasty": "清",
       "author": "佚名",
       "anchors": "gan-month",
-      "summary": "同样十天干乘十二月令一百二十格，除喜神外明确给出忌神天干，并附大运地支的顺逆，补上调候表不说的「不该碰什么」。",
+      "summary": "于同样一百二十格给出喜忌天干，并附大运地支的顺逆。",
       "rules": "tianzhi_core/data/jinbuhuan.json",
       "ref": ""
     },
@@ -40,7 +40,7 @@
       "dynasty": "清",
       "author": "沈孝瞻",
       "anchors": "chapter",
-      "summary": "以月令用神立格，把格局的成与败讲成一套可以推的规则。算法里的格局判定出自此书。",
+      "summary": "以月令用神立格，论格局之成败与顺用逆用。",
       "rules": "",
       "ref": "https://zh.wikisource.org/wiki/子平真詮"
     },
@@ -52,7 +52,7 @@
       "dynasty": "明",
       "author": "劉基",
       "anchors": "chapter",
-      "summary": "论五行生克制化之理，文辞极简。算法里日主强弱与通关取用的思路出自此书。",
+      "summary": "论五行生克制化之理，兼及从象、化象、通关。",
       "rules": "",
       "ref": "https://zh.wikisource.org/wiki/滴天髓"
     },
@@ -64,7 +64,7 @@
       "dynasty": "明",
       "author": "張楠",
       "anchors": "chapter",
-      "summary": "以病药之说立论，专驳当时流行的伪法。",
+      "summary": "以病药之说立论。",
       "rules": "",
       "ref": ""
     },
@@ -76,7 +76,7 @@
       "dynasty": "明",
       "author": "萬民英",
       "anchors": "chapter",
-      "summary": "术数的类书，神煞、纳音、诸家旧说汇于一编。算法里神煞的定义多出自此书。",
+      "summary": "术数类书，神煞、纳音、诸家旧说汇于一编。",
       "rules": "",
       "ref": "https://zh.wikisource.org/wiki/三命通會"
     },
@@ -88,7 +88,7 @@
       "dynasty": "宋",
       "author": "徐子平",
       "anchors": "chapter",
-      "summary": "现存最早的子平体系专书，后世诸书多由此衍出。",
+      "summary": "现存最早的子平体系专书。",
       "rules": "",
       "ref": "https://zh.wikisource.org/wiki/淵海子平"
     }
