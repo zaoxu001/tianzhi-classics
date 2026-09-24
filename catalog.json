@@ -1,7 +1,7 @@
 {
   "version": 1,
   "updated": "2026-09-24",
-  "note": "PDF 不在仓库里，见 README 的 Release 说明。收录标准同见 README。",
+  "note": "本仓收的是从典籍提取的结构化规则表（rules），不是原文。ref 是原文的参考链接，只引用不转载。",
   "books": [
     {
       "slug": "qiongtong",
@@ -15,17 +15,22 @@
       "author": "余春臺 輯",
       "anchors": "gan-month",
       "summary": "十天干乘十二月令共一百二十格，讲一年寒暖燥湿之下该取什么字。算法里的调候用神表逐格出自此书。",
-      "intro": "",
-      "excerpts": "texts/qiongtong.json",
-      "pdf": {
-        "release": "",
-        "asset": "",
-        "bytes": 0,
-        "pages": 0,
-        "source": "",
-        "license": "PD-old",
-        "ready": false
-      }
+      "rules": "tianzhi_core/data/tiaohou.json",
+      "ref": "https://zh.wikisource.org/wiki/穷通宝鉴"
+    },
+    {
+      "slug": "jinbuhuan",
+      "module": "bazi",
+      "title": "金不換大運",
+      "alias": [
+        "金不換"
+      ],
+      "dynasty": "清",
+      "author": "佚名",
+      "anchors": "gan-month",
+      "summary": "同样十天干乘十二月令一百二十格，除喜神外明确给出忌神天干，并附大运地支的顺逆，补上调候表不说的「不该碰什么」。",
+      "rules": "tianzhi_core/data/jinbuhuan.json",
+      "ref": ""
     },
     {
       "slug": "ziping",
@@ -36,17 +41,8 @@
       "author": "沈孝瞻",
       "anchors": "chapter",
       "summary": "以月令用神立格，把格局的成与败讲成一套可以推的规则。算法里的格局判定出自此书。",
-      "intro": "",
-      "excerpts": "texts/ziping.json",
-      "pdf": {
-        "release": "",
-        "asset": "",
-        "bytes": 0,
-        "pages": 0,
-        "source": "",
-        "license": "PD-old",
-        "ready": false
-      }
+      "rules": "",
+      "ref": "https://zh.wikisource.org/wiki/子平真詮"
     },
     {
       "slug": "ditian",
@@ -57,17 +53,8 @@
       "author": "劉基",
       "anchors": "chapter",
       "summary": "论五行生克制化之理，文辞极简。算法里日主强弱与通关取用的思路出自此书。",
-      "intro": "",
-      "excerpts": "texts/ditian.json",
-      "pdf": {
-        "release": "",
-        "asset": "",
-        "bytes": 0,
-        "pages": 0,
-        "source": "",
-        "license": "PD-old",
-        "ready": false
-      }
+      "rules": "",
+      "ref": "https://zh.wikisource.org/wiki/滴天髓"
     },
     {
       "slug": "shenfeng",
@@ -78,17 +65,8 @@
       "author": "張楠",
       "anchors": "chapter",
       "summary": "以病药之说立论，专驳当时流行的伪法。",
-      "intro": "",
-      "excerpts": "texts/shenfeng.json",
-      "pdf": {
-        "release": "",
-        "asset": "",
-        "bytes": 0,
-        "pages": 0,
-        "source": "",
-        "license": "PD-old",
-        "ready": false
-      }
+      "rules": "",
+      "ref": ""
     },
     {
       "slug": "sanming",
@@ -99,17 +77,8 @@
       "author": "萬民英",
       "anchors": "chapter",
       "summary": "术数的类书，神煞、纳音、诸家旧说汇于一编。算法里神煞的定义多出自此书。",
-      "intro": "",
-      "excerpts": "texts/sanming.json",
-      "pdf": {
-        "release": "",
-        "asset": "",
-        "bytes": 0,
-        "pages": 0,
-        "source": "",
-        "license": "PD-old",
-        "ready": false
-      }
+      "rules": "",
+      "ref": "https://zh.wikisource.org/wiki/三命通會"
     },
     {
       "slug": "yuanhai",
@@ -120,17 +89,8 @@
       "author": "徐子平",
       "anchors": "chapter",
       "summary": "现存最早的子平体系专书，后世诸书多由此衍出。",
-      "intro": "",
-      "excerpts": "texts/yuanhai.json",
-      "pdf": {
-        "release": "",
-        "asset": "",
-        "bytes": 0,
-        "pages": 0,
-        "source": "",
-        "license": "PD-old",
-        "ready": false
-      }
+      "rules": "",
+      "ref": "https://zh.wikisource.org/wiki/淵海子平"
     }
   ],
   "modules": [
