@@ -65,9 +65,13 @@
         {
           "path": "bazi/geju-alias.json",
           "provenance": "derived"
+        },
+        {
+          "path": "bazi/entries/ziping.json",
+          "provenance": "packaged"
         }
       ],
-      "ref": "https://zh.wikisource.org/wiki/%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE",
+      "ref": "",
       "ref_anchors": ""
     },
     {
@@ -83,6 +87,10 @@
         {
           "path": "bazi/ditian-rules.json",
           "provenance": "modeled"
+        },
+        {
+          "path": "bazi/entries/ditian.json",
+          "provenance": "extracted"
         }
       ],
       "ref": "https://zh.wikisource.org/wiki/%E6%BB%B4%E5%A4%A9%E9%AB%93",

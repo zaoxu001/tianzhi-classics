@@ -155,6 +155,7 @@ def main() -> int:
     # 反过来也查一遍：本仓有、校验清单里没有的文件，说明清单忘了更新
     listed = ({ROOT / r for r in want} | {ROOT / r for r in THRESHOLDS}
               | {ROOT / "bazi/ref-anchors.json"})
+    # bazi/entries/ 下是自原书提取的条目，没有对应的代码常量可比，跳过
     for path in sorted((ROOT / "bazi").glob("*.json")):
         if path not in listed:
             bad.append(f"bazi/{path.name}：不在校验清单里，tools/check.py 忘了更新")
