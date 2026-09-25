@@ -109,6 +109,10 @@
         {
           "path": "bazi/shenfeng-rules.json",
           "provenance": "modeled"
+        },
+        {
+          "path": "bazi/entries/shenfeng.json",
+          "provenance": "extracted"
         }
       ],
       "ref": "https://zh.wikisource.org/wiki/%E7%A5%9E%E5%B3%B0%E9%80%9A%E8%80%83",
@@ -169,7 +173,7 @@
           "provenance": "derived"
         }
       ],
-      "ref": "https://zh.wikisource.org/wiki/%E5%8D%94%E7%B4%80%E8%BE%A8%E6%96%B9%E6%9B%B8",
+      "ref": "",
       "ref_anchors": ""
     }
   ],
@@ -227,5 +231,21 @@
     "packaged": "库中随包的既有数据，提取与校勘过程未见记载，未回原书逐条复核。",
     "derived": "自算法实现的常量导出。常量的注释标明典籍出处，部分引有原文成句。",
     "modeled": "自算法实现的判断逻辑结构化而来，非自原书文本提取。所载为该实现如何理解这条法则，不等同于原书论述——原书于此另有大段论说与例证，未纳入。"
+  },
+  "verify_log": {
+    "date": "2026-09-25",
+    "note": "各书回原文核对的进展与受阻之处。下次接手先看这里，不必从头再查一遍。",
+    "done": {
+      "qiongtong": "维基文库本，120 格逐格核过，改正 5 处",
+      "ziping": "国图藏本影印件，书葉十七【論用神】逐字核过，记异文 4 处",
+      "ditian": "维基文库本，从化论－真、从化论－假、通隔论三篇，所引四句全数核到",
+      "shenfeng": "维基文库本，「病药说类」核到，所引一句一字不差"
+    },
+    "blocked": {
+      "sanming": "维基文库本仅录九卷（原书十二卷），九卷全扫未见天乙贵人起例口诀。需另寻全本。",
+      "yuanhai": "维基文库本页首自注「此文档未完成，一部分的原作内容还未录入」，七十三篇中无文昌一节。需另寻全本。",
+      "xieji": "维基文库无此书（该页为缺页）。先前 catalog 里那条 ref 是死链，已清空。需另寻底本。",
+      "jinbuhuan": "尚未查找底本。"
+    }
   }
 }
