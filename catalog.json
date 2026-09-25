@@ -216,6 +216,10 @@
           "provenance": "extracted"
         },
         {
+          "path": "liuren/entries/liurendaquan-bifa.json",
+          "provenance": "extracted"
+        },
+        {
           "path": "liuren/collation.json",
           "provenance": "extracted"
         }
