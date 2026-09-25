@@ -212,6 +212,10 @@
           "provenance": "extracted"
         },
         {
+          "path": "liuren/entries/liurendaquan-keti.json",
+          "provenance": "extracted"
+        },
+        {
           "path": "liuren/collation.json",
           "provenance": "extracted"
         }
