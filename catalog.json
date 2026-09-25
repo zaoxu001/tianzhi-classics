@@ -149,19 +149,14 @@
       "author": "徐子平",
       "anchors": "chapter",
       "summary": "现存最早的子平体系专书。",
-      "tables": [
-        {
-          "path": "bazi/shensha-wenchang.json",
-          "provenance": "derived"
-        }
-      ],
+      "tables": [],
       "ref": "https://zh.wikisource.org/wiki/%E6%B7%B5%E6%B5%B7%E5%AD%90%E5%B9%B3",
       "ref_anchors": ""
     },
     {
       "slug": "xieji",
       "module": "bazi",
-      "title": "協紀辨方書",
+      "title": "欽定協紀辨方書",
       "alias": [],
       "dynasty": "清",
       "author": "允祿 等 奉敕撰",
@@ -175,9 +170,31 @@
         {
           "path": "bazi/shensha-yuede.json",
           "provenance": "derived"
+        },
+        {
+          "path": "bazi/entries/xieji.json",
+          "provenance": "extracted"
         }
       ],
-      "ref": "",
+      "ref": "https://zh.wikisource.org/wiki/%E6%AC%BD%E5%AE%9A%E5%8D%94%E7%B4%80%E8%BE%A8%E6%96%B9%E6%9B%B8_(%E5%9B%9B%E5%BA%AB%E5%85%A8%E6%9B%B8%E6%9C%AC)/%E5%8D%B705",
+      "ref_anchors": ""
+    },
+    {
+      "slug": "gujin",
+      "module": "bazi",
+      "title": "欽定古今圖書集成",
+      "alias": [],
+      "dynasty": "清",
+      "author": "陳夢雷 等輯",
+      "anchors": "chapter",
+      "summary": "清代官修类书，星命部汇辑诸家神煞起例。",
+      "tables": [
+        {
+          "path": "bazi/entries/gujin.json",
+          "provenance": "extracted"
+        }
+      ],
+      "ref": "https://zh.wikisource.org/wiki/%E6%AC%BD%E5%AE%9A%E5%8F%A4%E4%BB%8A%E5%9C%96%E6%9B%B8%E9%9B%86%E6%88%90/%E5%8D%9A%E7%89%A9%E5%BD%99%E7%B7%A8/%E8%97%9D%E8%A1%93%E5%85%B8/%E7%AC%AC568%E5%8D%B7",
       "ref_anchors": ""
     }
   ],
@@ -244,11 +261,12 @@
       "ziping": "国图藏本影印件，书葉十七【論用神】逐字核过，记异文 4 处",
       "ditian": "维基文库本，从化论－真、从化论－假、通隔论三篇，所引四句全数核到",
       "shenfeng": "维基文库本，「病药说类」核到，所引一句一字不差",
-      "sanming": "四庫全書本卷三，天乙貴人与文昌貴的起例均核到；文昌一派与本站所用不同，两说并记"
+      "sanming": "四庫全書本卷三，天乙貴人与文昌貴的起例均核到；文昌一派与本站所用不同，两说并记",
+      "xieji": "四庫全書本卷五「義例三」，天德月德二十四条与本站数据逐条核对全合",
+      "gujin": "艺术典第568卷星命部，文昌起例核到；本站辛一干与底本不合，依原文改正"
     },
     "blocked": {
-      "yuanhai": "该本页首自注「此文档未完成」，无文昌一节；其中「天德」「月德」仅顺带提及，无起例。需另寻全本。",
-      "xieji": "维基文库无此书，四庫全書本亦缺页。天德月德的起例待另寻底本（三命通會卷三有論月徳、卷五有天徳貴人，可作旁证）。",
+      "yuanhai": "该本自注「此文档未完成」，无文昌一节。文昌的出处已改从《古今图书集成》；此书余下所涉（若有）待另寻全本。",
       "jinbuhuan": "尚未查找底本。"
     }
   }
