@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-09-24",
+  "updated": "2026-09-25",
   "note": "tables 为该书整理出的数据文件，provenance 记其来路，释义见顶层 provenance；ref 为原文链接，ref_anchors 指向拼接锚点的方法。路径相对本仓根目录。",
   "books": [
     {
@@ -217,6 +217,10 @@
         },
         {
           "path": "liuren/entries/liurendaquan-bifa.json",
+          "provenance": "extracted"
+        },
+        {
+          "path": "liuren/entries/liurendaquan-zhanshi.json",
           "provenance": "extracted"
         },
         {
