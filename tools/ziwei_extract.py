@@ -195,6 +195,71 @@ def miaowang(ming_items):
     return table, src
 
 
+# ---------------- 卷三 · 论诸星同垣各司所宜分别富贵贫贱夭寿 ----------------
+MW3 = {"庙": "庙", "旺": "旺", "地": "得", "得": "得", "利": "利", "平": "平", "闲": "平", "陷": "陷"}
+# 合论的节名：只由星名与这几个合称组成
+HEADWORD = "(?:" + "|".join(STARS + ["日月", "昌曲", "魁钺", "左右", "辅弼", "劫空", "伤使", "命宫", "身宫", "纳音", "财帛", "财宅", "财福", "科权禄", "拱照", "太阳太阴"]) + ")+"
+# 合称拆成星名；录文错字（贪狠、廉真）归正，见 collation
+EXPAND = {"昌曲": ["文昌", "文曲"], "辅弼": ["左辅", "右弼"], "左右": ["左辅", "右弼"], "羊陀": ["擎羊", "陀罗"], "魁钺": ["天魁", "天钺"],
+          "劫空": ["地劫", "天空"], "伤使": ["天伤", "天使"], "日月": ["太阳", "太阴"], "忌星": ["化忌"], "忌宿": ["化忌"], "廉真": ["廉贞"]}
+
+
+def star_list(txt):
+    """一串连写的星名（「禄存天机天同太阴昌曲辅弼」）切成星名表"""
+    out, k = [], 0
+    names = sorted(STARS + list(EXPAND), key=len, reverse=True)
+    while k < len(txt):
+        n = next((x for x in names if txt.startswith(x, k)), None)
+        if not n:
+            k += 1; continue
+        out += EXPAND.get(n, [n]); k += len(n)
+    return list(dict.fromkeys(out))
+
+
+def zhuxing():
+    """诸星同垣：每节一颗星（或「文昌文曲」「太阳太阴拱照」这样的合论），节首一行庙旺，其下每行「断语  注」"""
+    t = fetch("卷三")
+    sec = section(t, "===论诸星同垣各司所宜分别富贵贫贱夭寿===", None)
+    items, cur = [], None
+    for l in lines_of(sec)[1:]:
+        raw = l.rstrip()
+        s = raw.strip().replace("贪狠", "贪狼")
+        if not s or s.startswith("<") or s.startswith("="):
+            continue
+        m = re.match(r"^([一-鿿]{2,6})\s+((?:[庙旺地得利平闲陷][子丑寅卯辰巳午未申酉戌亥]*\s*)+(?:无(?:失)?陷)?)\s*$", s)
+        if m or re.fullmatch(HEADWORD, s):
+            head = m.group(1) if m else s
+            mw = {}
+            if m:
+                for lv, zs in re.findall(r"([庙旺地得利平闲陷])([子丑寅卯辰巳午未申酉戌亥]+)", m.group(2)):
+                    for z in zs: mw.setdefault(z, MW3[lv])
+            cur = {"key": head, "stars": star_list(head), "miaowang": mw, "miaowang_line": s if m else "", "lines": []}
+            items.append(cur); continue
+        if cur is None:
+            continue
+        parts = re.split(r"\s{2,}|　", s, maxsplit=1)
+        cur["lines"].append({"text": parts[0].strip(), "note": parts[1].strip() if len(parts) > 1 else ""})
+    return [dict(it, vol=3, chapter="论诸星同垣各司所宜分别富贵贫贱夭寿") for it in items]
+
+
+# ---------------- 卷三 · 论太岁小限星辰庙陷遇十二宫中吉凶 ----------------
+def taisui():
+    """十二支各三段：太岁并小限到本宫入庙化吉 / 不入庙化凶 / 太岁所值吉凶星。
+    derived：所值吉凶星一段切成吉星、凶星两串（「若遇」「如遇」「若值」「如值」之后为凶）"""
+    t = fetch("卷三")
+    i = t.index("论太岁小限星辰庙陷遇十二宫中吉凶"); j = t.index("===论诸星同垣")
+    body = t[i:j]
+    out = {}
+    for z in ZHI:
+        def para(title):
+            k = body.index(title) + len(title)
+            nxt = re.search(r"\n\s*[子丑寅卯辰巳午未申酉戌亥]年太岁", body[k:])
+            return re.sub(r"\s+", "", body[k:k + nxt.start()] if nxt else body[k:])
+        ji, xiong, zhi = para(f"{z}年太岁并小限到{z}宫入庙化吉"), para(f"{z}年太岁并小限到{z}宫不入庙化凶"), para(f"{z}年太岁所值吉凶星")
+        m = re.split(r"(?:若遇|如遇|若值|如值)", zhi, maxsplit=1)
+        out[z] = {"ji": ji, "xiong": xiong, "zhi": zhi, "good": star_list(m[0].split("，")[0]), "bad": star_list(m[1].split("，")[0]) if len(m) > 1 else []}
+    return out
+
 # ---------------- 卷一、卷三：按篇切 ----------------
 FU = ("太微賦", "形性賦", "增補太微賦", "斗數骨髓賦", "斗数骨随赋", "女命骨髓賦", "女命骨髓赋")
 
@@ -224,6 +289,8 @@ def build():
         "miaowang": {"note": "庙旺利陷表（derived）：从卷二命宫一节各星「某宫入庙 / 旺地 / 得地 / 利益 / 和平 / 陷地」读出；四煞无分宫小节者取正文末「辰戌丑未入庙」等句。"
                              "火星书中按生年论（「寅午戌人宜，申子辰人陷」），不入此表。书中那一宫没写的留空，不从他书补。src 为每格所据原句。", "provenance": "derived", "table": mw, "src": mw_src},
         "juan1": {"note": "卷一：赋文（太微赋、形性赋、骨髓赋、女命骨髓赋等，另按句切出 lines）、诸星问答、格局诸论，按篇切分。", "items": by_heading("卷一")},
+        "zhuxing": {"note": "卷三「论诸星同垣各司所宜分别富贵贫贱夭寿」：按星分节。miaowang 为节首一行（「紫微 庙丑未午 旺寅申卯酉巳亥 平子 无陷」）所载，地作得、闲作平；lines 每条为断语 text 与其下小注 note。录文「贪狠」「廉真」归正为贪狼、廉贞，见 collation。", "items": zhuxing()},
+        "taisui": {"note": "卷三「论太岁小限星辰庙陷遇十二宫中吉凶」：十二支各三段原文（入庙化吉 ji、不入庙化凶 xiong、太岁所值吉凶星 zhi）。good / bad 为 derived：所值吉凶星一段中「若遇」之前、之后的星名，合称已拆开。", "provenance": "extracted+derived", "table": taisui()},
         "juan3": {"note": "卷三：谈星要论、限运、杂论，按篇切分。", "items": by_heading("卷三")},
     }
 

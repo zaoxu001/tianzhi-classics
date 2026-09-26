@@ -269,6 +269,14 @@
           "provenance": "extracted"
         },
         {
+          "path": "ziwei/entries/ziweiquanshu-zhuxing.json",
+          "provenance": "extracted"
+        },
+        {
+          "path": "ziwei/entries/ziweiquanshu-taisui.json",
+          "provenance": "extracted+derived"
+        },
+        {
           "path": "ziwei/collation.json",
           "provenance": "extracted"
         }
