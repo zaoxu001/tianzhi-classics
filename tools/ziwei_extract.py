@@ -118,6 +118,10 @@ def stars_at(s):
     return [st] if st else []
 
 
+# 录文里混入的今人白话（见 collation「兄弟·廉贞」），抽取时剔除
+INTRUDED = ["兄弟感情融洽，但兄弟不多。"]
+
+
 def gong():
     t = fetch("卷二")
     heads = [(m.start(), m.group(1)) for m in re.finditer(r"===\s*([^=\n]+?)\s*===", t)]
@@ -148,7 +152,9 @@ def gong():
                     combo = next((k for k in COMBO if s.startswith(k)), None)
                     cur = {"palace": pal, "star": combo or (sts[0] if sts else "总论"), "stars": sts, "text": s}; out.append(cur)
                 cont = s.endswith("，")
-    for o in out: o.update(vol=2, chapter=o["palace"] if o["palace"] != "命宫" else "命宫")
+    for o in out:
+        for x in INTRUDED: o["text"] = o["text"].replace(x, "")
+        o.update(vol=2, chapter=o["palace"] if o["palace"] != "命宫" else "命宫")
     return out
 
 
