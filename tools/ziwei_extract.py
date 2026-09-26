@@ -62,7 +62,7 @@ def ziwei_ju():
     t = fetch("卷二")
     sec = section(t, "===安身命例===", "===一 命宫===")
     out = []
-    for m in re.finditer(r"<poem>(.*?)</poem>\s*<nowiki>(.*?)</nowiki>", sec, flags=re.S):
+    for m in re.finditer(r"<poem>((?:(?!<poem>).)*?)</poem>\s*<nowiki>(.*?)</nowiki>", sec, flags=re.S):
         verse, grid = m.group(1).strip(), m.group(2)
         name = re.search(r"([水木金土火][二三四五六]局)", grid).group(1)
         rows, block = [], []
