@@ -24,13 +24,15 @@
 | [三命通會](https://zh.wikisource.org/wiki/%E4%B8%89%E5%91%BD%E9%80%9A%E6%9C%83) | 明 · 萬民英 | 天乙贵人起例 | 10 | `bazi/shensha-tianyi.json` |
 | [淵海子平](https://zh.wikisource.org/wiki/%E6%B7%B5%E6%B5%B7%E5%AD%90%E5%B9%B3) | 宋 · 徐子平 | 文昌贵人起例 | 10 | `bazi/shensha-wenchang.json` |
 | [協紀辨方書](https://zh.wikisource.org/wiki/%E5%8D%94%E7%B4%80%E8%BE%A8%E6%96%B9%E6%9B%B8) | 清 · 允祿 等 奉敕撰 | 天德、月德贵人起例 | 24 | `bazi/shensha-tiande.json`<br>`bazi/shensha-yuede.json` |
+| [六壬大全](https://zh.wikisource.org/wiki/%E5%85%AD%E5%A3%AC%E5%A4%A7%E5%85%A8_(%E5%9B%9B%E5%BA%AB%E5%85%A8%E6%9B%B8%E6%9C%AC)) | 明 · 郭載騋 校（四庫全書本） | 课经起例课、课体、毕法赋百句与注、占事断法 | 48 / 55 / 100 / 29 | `liuren/entries/` |
+| [紫微斗數全書](https://zh.wikisource.org/wiki/%E7%B4%AB%E5%BE%AE%E6%96%97%E6%95%B8%E5%85%A8%E6%9B%B8) | 舊題宋 · 陳摶撰，明 · 潘希尹補輯 | 安星诸诀、五局定紫微、十二宫逐星论断、庙旺利陷、赋文与诸星问答、限运 | 40 / 5 / 246 / 26 / 56 / 20 | `ziwei/entries/` |
 
 另有干支体系的基础对应关系，为诸书通用，非某一部所独出：六十甲子、干支五行、
 地支藏干、十二长生、天干五合、地支六合六冲六害、阳刃、旺相休囚死（`bazi/ganzhi.json`），
 禄神起例（`bazi/shensha-lushen.json`），人元司令分日（`bazi/siling.json`，各家
 天数有异，此为其中一种）。
 
-均为公有领域古籍。书名即原文链接，指向维基文库；未附链接者（金不换大运、神峰通考）
+均为公有领域古籍。书名即原文链接，指向维基文库；《紫微斗數全書》的维基文库录文依某现代排印本，底本取明南阳堂刊本（1600，[Internet Archive 扫描](https://archive.org/details/20260506_20260506_1217)），出入记于 `ziwei/collation.json`；未附链接者（金不换大运、神峰通考）
 暂未找到可靠的公开电子文本。
 
 ## 数据来路

@@ -1,0 +1,36 @@
+{
+ "book": "ziweiquanshu",
+ "note": "维基文库录文与规则、与底本的出入。status：pending 待对明刻本原图；confirmed 已对原图。",
+ "items": [
+  {
+   "key": "木三局·寅宫",
+   "vol": 2,
+   "chapter": "安身命例",
+   "text_says": "寅宫列「初三、初九」",
+   "problem": "初九已见于辰宫，一日不能两处；且全表不见初五",
+   "by_rule": "木三局起紫微诀「初一起龙初二牛，逆进二宫安二日……」推得初五在寅、初九在辰",
+   "reading": "寅宫「初九」当作「初五」",
+   "status": "pending"
+  },
+  {
+   "key": "金四局·亥宫",
+   "vol": 2,
+   "chapter": "安身命例",
+   "text_says": "亥宫只列「初一」",
+   "problem": "全表不见三十",
+   "by_rule": "按金四局之法，三十与初一同落亥宫",
+   "reading": "亥宫漏「三十」",
+   "status": "pending"
+  },
+  {
+   "key": "庙旺表留空",
+   "vol": 2,
+   "chapter": "命宫",
+   "text_says": "命宫一节部分星在部分宫只言所喜生年，不言庙旺",
+   "problem": "庙旺利陷表有空格",
+   "by_rule": "",
+   "reading": "照实留空，不从他书补；算法遇空格按「未载」处理",
+   "status": "confirmed"
+  }
+ ]
+}

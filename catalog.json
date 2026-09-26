@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-09-25",
+  "updated": "2026-09-26",
   "note": "tables 为该书整理出的数据文件，provenance 记其来路，释义见顶层 provenance；ref 为原文链接，ref_anchors 指向拼接锚点的方法。路径相对本仓根目录。",
   "books": [
     {
@@ -230,6 +230,51 @@
       ],
       "ref": "https://zh.wikisource.org/wiki/%E5%85%AD%E5%A3%AC%E5%A4%A7%E5%85%A8_(%E5%9B%9B%E5%BA%AB%E5%85%A8%E6%9B%B8%E6%9C%AC)",
       "ref_scan": "https://archive.org/details/06054168.cn",
+      "ref_anchors": ""
+    },
+    {
+      "slug": "ziweiquanshu",
+      "module": "ziwei",
+      "title": "紫微斗數全書",
+      "alias": [
+        "紫微斗数全书"
+      ],
+      "dynasty": "明",
+      "author": "舊題宋陳摶撰，明潘希尹補輯",
+      "anchors": "chapter",
+      "summary": "紫微斗数的根本典籍。卷一赋文、诸星问答与格局，卷二安星诸诀与十二宫逐星论断，卷三限运与杂论。",
+      "tables": [
+        {
+          "path": "ziwei/entries/ziweiquanshu-anxing.json",
+          "provenance": "extracted"
+        },
+        {
+          "path": "ziwei/entries/ziweiquanshu-ju.json",
+          "provenance": "extracted"
+        },
+        {
+          "path": "ziwei/entries/ziweiquanshu-gong.json",
+          "provenance": "extracted"
+        },
+        {
+          "path": "ziwei/entries/ziweiquanshu-miaowang.json",
+          "provenance": "derived"
+        },
+        {
+          "path": "ziwei/entries/ziweiquanshu-juan1.json",
+          "provenance": "extracted"
+        },
+        {
+          "path": "ziwei/entries/ziweiquanshu-juan3.json",
+          "provenance": "extracted"
+        },
+        {
+          "path": "ziwei/collation.json",
+          "provenance": "extracted"
+        }
+      ],
+      "ref": "https://zh.wikisource.org/wiki/%E7%B4%AB%E5%BE%AE%E6%96%97%E6%95%B8%E5%85%A8%E6%9B%B8",
+      "ref_scan": "https://archive.org/details/20260506_20260506_1217",
       "ref_anchors": ""
     }
   ],
