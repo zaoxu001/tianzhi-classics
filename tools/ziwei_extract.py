@@ -32,7 +32,7 @@ def section(text, start, end=None):
 
 
 # ---------------- 卷二 · 安身命例：安星诸诀 ----------------
-HEAD = re.compile(r"^\s*((?:安|起|定|论|六十)[^，。：:\s]{1,16}?)(?:\s+(.{1,16}))?\s*$")
+HEAD = re.compile(r"^\s*((?:安|起|定|论|六十|天空地劫)[^，。：:\s]{1,16}?)(?:\s+(.{1,16}))?\s*$")
 
 
 def anxing():
@@ -49,6 +49,8 @@ def anxing():
         if m and "，" not in s and len(s) <= 26:
             cur = {"key": m.group(1), "note": (m.group(2) or "").strip(), "text": ""}
             items.append(cur); continue
+        if s.startswith("安长生、"):   # 长生十二神一句录文无标题，接在安封诰诀后；单列，key 为整理者所加
+            cur = {"key": "安长生十二神", "note": "标题为整理者所加", "text": ""}; items.append(cur)
         if cur is None:
             cur = {"key": "安身命例", "note": "", "text": ""}; items.append(cur)
         cur["text"] += (("\n" if cur["text"] else "") + s)
@@ -158,6 +160,11 @@ def miaowang(ming_items):
             for m in re.finditer(r"([子丑寅卯辰巳午未申酉戌亥]+)宫(" + "|".join(k for k, _ in LEVEL) + r")", b):
                 lv = dict(LEVEL)[m.group(2)]
                 for z in m.group(1): row.setdefault(z, lv); src.setdefault(st, {}).setdefault(z, b)
+        # 四煞等无分宫小节，庙陷写在正文末：「辰戌丑未入庙」「子午卯酉陷地」
+        for l in it["text"].split("\n"):
+            m = re.match(r"^([子丑寅卯辰巳午未申酉戌亥]{2,})(" + "|".join(k for k, _ in LEVEL) + r")", l)
+            if m:
+                for z in m.group(1): row.setdefault(z, dict(LEVEL)[m.group(2)]); src.setdefault(st, {}).setdefault(z, l)
     return table, src
 
 
@@ -187,8 +194,8 @@ def build():
         "ju": {"note": "卷二五行局定紫微图（水二局至火六局），原图为字符画，此处按宫读出每日紫微所在。"
                        "录文有两处与诀文不合，见 ziwei/collation.json。", "items": ziwei_ju()},
         "gong": {"note": "卷二十二宫逐星论断：命宫一节每星含总论、十二支宫庙旺与所喜生年、入男命女命入限吉凶诀；其余各宫每星一段。", "items": g},
-        "miaowang": {"note": "庙旺利陷表（derived）：从卷二命宫一节各星「某宫入庙 / 旺地 / 得地 / 利益 / 和平 / 陷地」读出。"
-                             "书中那一宫没写的留空，不从他书补。src 为每格所据原句。", "provenance": "derived", "table": mw, "src": mw_src},
+        "miaowang": {"note": "庙旺利陷表（derived）：从卷二命宫一节各星「某宫入庙 / 旺地 / 得地 / 利益 / 和平 / 陷地」读出；四煞无分宫小节者取正文末「辰戌丑未入庙」等句。"
+                             "火星书中按生年论（「寅午戌人宜，申子辰人陷」），不入此表。书中那一宫没写的留空，不从他书补。src 为每格所据原句。", "provenance": "derived", "table": mw, "src": mw_src},
         "juan1": {"note": "卷一：赋文（太微赋、形性赋、骨髓赋、女命骨髓赋等，另按句切出 lines）、诸星问答、格局诸论，按篇切分。", "items": by_heading("卷一")},
         "juan3": {"note": "卷三：谈星要论、限运、杂论，按篇切分。", "items": by_heading("卷三")},
     }
