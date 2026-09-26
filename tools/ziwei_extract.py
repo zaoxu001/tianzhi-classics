@@ -107,6 +107,17 @@ def star_at(s):
     return next((x for x in STARS if s.startswith(x)), None)
 
 
+COMBO = {"左辅右弼": ["左辅", "右弼"], "魁钺": ["天魁", "天钺"], "羊陀": ["擎羊", "陀罗"], "羊铃": ["擎羊", "铃星"], "羊玲": ["擎羊", "铃星"]}
+
+
+def stars_at(s):
+    """段首所论的星：合称拆开，单星照 star_at"""
+    for k, v in COMBO.items():
+        if s.startswith(k): return v
+    st = star_at(s)
+    return [st] if st else []
+
+
 def gong():
     t = fetch("卷二")
     heads = [(m.start(), m.group(1)) for m in re.finditer(r"===\s*([^=\n]+?)\s*===", t)]
@@ -119,14 +130,24 @@ def gong():
         if pal == "命宫":
             out += ming(body)
         else:
-            cur = None
+            # 一行以「，」收尾的，下一行是续句（「七杀同……」是说与七杀同宫）；以「。」收尾才另起一段。
+            # 段首是星名（或「左辅右弼」「魁钺」这类合称）就归那颗星；各宫开头不点星名的是总论
+            # 宫末「定公卿」一类无标点的小题，其下是诗诀：小题连同诗句单列一条，不按诗句首字归星
+            cur, cont, verse = None, False, False
             for l in lines_of(body):
                 s = l.strip()
-                if not s: continue
-                st = star_at(s)
-                if st and not s.startswith(st + "入"):
-                    cur = {"palace": pal, "star": st, "text": s}; out.append(cur)
-                elif cur: cur["text"] += "\n" + s
+                if not s or s.startswith("<"): continue
+                if not re.search(r"[，。、]", s):
+                    cur = {"palace": pal, "star": s, "stars": [], "text": s}; out.append(cur); verse = True; cont = True; continue
+                if cur is not None and (cont or verse):
+                    cur["text"] += "\n" + s; cont = s.endswith("，"); verse = False; continue
+                sts = stars_at(s)
+                if not sts and cur is not None and cur["star"] == "总论":   # 总论连段
+                    cur["text"] += "\n" + s
+                else:
+                    combo = next((k for k in COMBO if s.startswith(k)), None)
+                    cur = {"palace": pal, "star": combo or (sts[0] if sts else "总论"), "stars": sts, "text": s}; out.append(cur)
+                cont = s.endswith("，")
     for o in out: o.update(vol=2, chapter=o["palace"] if o["palace"] != "命宫" else "命宫")
     return out
 
@@ -193,7 +214,7 @@ def build():
         "anxing": {"note": "卷二「安身命例」所载安星诸诀，按诀切分，原文照录。", "items": anxing()},
         "ju": {"note": "卷二五行局定紫微图（水二局至火六局），原图为字符画，此处按宫读出每日紫微所在。"
                        "录文有两处与诀文不合，见 ziwei/collation.json。", "items": ziwei_ju()},
-        "gong": {"note": "卷二十二宫逐星论断：命宫一节每星含总论、十二支宫庙旺与所喜生年、入男命女命入限吉凶诀；其余各宫每星一段。", "items": g},
+        "gong": {"note": "卷二十二宫逐星论断：命宫一节每星含总论、十二支宫庙旺与所喜生年、入男命女命入限吉凶诀；其余各宫按段切：段首星名为 star，stars 列出所论各星（「左辅右弼」「魁钺」「羊陀」等合称拆开）；不点星名的为「总论」；官禄宫末「定公卿」等小题连诗诀各为一条。以「，」收尾的行与下行同段（「七杀同……」是说与七杀同宫，非另起）。", "items": g},
         "miaowang": {"note": "庙旺利陷表（derived）：从卷二命宫一节各星「某宫入庙 / 旺地 / 得地 / 利益 / 和平 / 陷地」读出；四煞无分宫小节者取正文末「辰戌丑未入庙」等句。"
                              "火星书中按生年论（「寅午戌人宜，申子辰人陷」），不入此表。书中那一宫没写的留空，不从他书补。src 为每格所据原句。", "provenance": "derived", "table": mw, "src": mw_src},
         "juan1": {"note": "卷一：赋文（太微赋、形性赋、骨髓赋、女命骨髓赋等，另按句切出 lines）、诸星问答、格局诸论，按篇切分。", "items": by_heading("卷一")},
