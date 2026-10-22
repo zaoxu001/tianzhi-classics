@@ -58,6 +58,12 @@ def expected() -> dict[str, object]:
     for name in ("tiaohou.json", "jinbuhuan.json", "siling.json"):
         with resources.files("tianzhi_core.data").joinpath(name).open(encoding="utf-8") as f:
             out[f"bazi/{name}"] = json.load(f)
+    # 奇门五张规则表：库里随包的是本仓 qimen/ 下的逐字节副本（版本较旧的库没有，跳过）
+    for name in ("ju", "jiugong", "buju", "sanyuan", "geju"):
+        res = resources.files("tianzhi_core.data").joinpath(f"qimen_{name}.json")
+        if res.is_file():
+            with res.open(encoding="utf-8") as f:
+                out[f"qimen/{name}.json"] = json.load(f)
     out["bazi/geju-ops.json"] = plain(geju.PATTERN_OPS)
     out["bazi/geju-alias.json"] = plain(geju.PATTERN_ALIAS)
     out["bazi/shensha-tianyi.json"] = plain(shensha.TIAN_YI)

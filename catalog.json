@@ -284,6 +284,73 @@
       "ref": "https://zh.wikisource.org/wiki/%E7%B4%AB%E5%BE%AE%E6%96%97%E6%95%B8%E5%85%A8%E6%9B%B8",
       "ref_scan": "https://archive.org/details/20260506_20260506_1217",
       "ref_anchors": ""
+    },
+    {
+      "slug": "dunjiayanyi",
+      "module": "qimen",
+      "title": "遁甲演義",
+      "alias": [],
+      "dynasty": "明",
+      "author": "程道生 撰",
+      "anchors": "chapter",
+      "summary": "四卷。卷一四家起例、烟波钓叟赋、超神接气置闰诀与引例，卷二吉凶诸格（多附算例），卷三九星属性、旺相、八神与两则完整布局算例。四库全书正编于遁甲只收此一部。",
+      "tables": [
+        {
+          "path": "qimen/entries/dunjiayanyi.json",
+          "provenance": "extracted"
+        },
+        {
+          "path": "qimen/ju.json",
+          "provenance": "derived"
+        },
+        {
+          "path": "qimen/jiugong.json",
+          "provenance": "derived"
+        },
+        {
+          "path": "qimen/buju.json",
+          "provenance": "derived"
+        },
+        {
+          "path": "qimen/sanyuan.json",
+          "provenance": "derived"
+        },
+        {
+          "path": "qimen/geju.json",
+          "provenance": "modeled"
+        },
+        {
+          "path": "qimen/examples.json",
+          "provenance": "extracted"
+        },
+        {
+          "path": "qimen/collation.json",
+          "provenance": "extracted"
+        }
+      ],
+      "ref": "https://zh.wikisource.org/wiki/%E9%81%81%E7%94%B2%E6%BC%94%E7%BE%A9_(%E5%9B%9B%E5%BA%AB%E5%85%A8%E6%9B%B8%E6%9C%AC)",
+      "ref_scan": "https://archive.org/details/06056496.cn",
+      "ref_anchors": ""
+    },
+    {
+      "slug": "xiejibianfang-qimen",
+      "module": "qimen",
+      "title": "欽定協紀辨方書（卷三十五·竒門三元）",
+      "alias": [
+        "協紀辨方書"
+      ],
+      "dynasty": "清",
+      "author": "允祿等 奉敕撰",
+      "anchors": "chapter",
+      "summary": "乾隆官修选择书。卷三十五末附奇门三元：歌诀、阴阳遁局数歌、八门九星本位歌，按语详述超神、置闰、接气与飞布之法，并列阳一局、阴九局两式。",
+      "tables": [
+        {
+          "path": "qimen/entries/xiejibianfang-35.json",
+          "provenance": "extracted"
+        }
+      ],
+      "ref": "https://zh.wikisource.org/wiki/%E6%AC%BD%E5%AE%9A%E5%8D%94%E7%B4%80%E8%BE%A8%E6%96%B9%E6%9B%B8_(%E5%9B%9B%E5%BA%AB%E5%85%A8%E6%9B%B8%E6%9C%AC)",
+      "ref_anchors": ""
     }
   ],
   "modules": [

@@ -26,6 +26,8 @@
 | [協紀辨方書](https://zh.wikisource.org/wiki/%E5%8D%94%E7%B4%80%E8%BE%A8%E6%96%B9%E6%9B%B8) | 清 · 允祿 等 奉敕撰 | 天德、月德贵人起例 | 24 | `bazi/shensha-tiande.json`<br>`bazi/shensha-yuede.json` |
 | [六壬大全](https://zh.wikisource.org/wiki/%E5%85%AD%E5%A3%AC%E5%A4%A7%E5%85%A8_(%E5%9B%9B%E5%BA%AB%E5%85%A8%E6%9B%B8%E6%9C%AC)) | 明 · 郭載騋 校（四庫全書本） | 课经起例课、课体、毕法赋百句与注、占事断法 | 48 / 55 / 100 / 29 | `liuren/entries/` |
 | [紫微斗數全書](https://zh.wikisource.org/wiki/%E7%B4%AB%E5%BE%AE%E6%96%97%E6%95%B8%E5%85%A8%E6%9B%B8) | 舊題宋 · 陳摶撰，明 · 潘希尹補輯 | 安星诸诀、五局定紫微、十二宫逐星论断、庙旺利陷、赋文与诸星问答、限运 | 40 / 5 / 246 / 26 / 56 / 20 | `ziwei/entries/` |
+| [遁甲演義](https://zh.wikisource.org/wiki/%E9%81%81%E7%94%B2%E6%BC%94%E7%BE%A9_(%E5%9B%9B%E5%BA%AB%E5%85%A8%E6%9B%B8%E6%9C%AC)) | 明 · 程道生 撰（四庫全書本） | 奇门四家起例、超神接气置闰、吉凶诸格、九星八神；排盘算例与定局判例 | 80 / 48 / 15 | `qimen/entries/`、`qimen/*.json` |
+| [欽定協紀辨方書](https://zh.wikisource.org/wiki/%E6%AC%BD%E5%AE%9A%E5%8D%94%E7%B4%80%E8%BE%A8%E6%96%B9%E6%9B%B8_(%E5%9B%9B%E5%BA%AB%E5%85%A8%E6%9B%B8%E6%9C%AC)) 卷三十五 | 清 · 允祿 等 奉敕撰 | 奇门三元歌诀、阴阳遁局数歌、八门九星本位歌、置闰与飞布按语、两式 | 7 | `qimen/entries/xiejibianfang-35.json` |
 
 另有干支体系的基础对应关系，为诸书通用，非某一部所独出：六十甲子、干支五行、
 地支藏干、十二长生、天干五合、地支六合六冲六害、阳刃、旺相休囚死（`bazi/ganzhi.json`），
@@ -340,3 +342,23 @@ python tools/check.py
 
 - [tianzhi-core](https://github.com/zaoxu001/tianzhi-core) — 术数算法，MIT
 - [tianzhi.live](https://tianzhi.live) — 在线排盘与研习
+
+### 奇门
+
+《遁甲演義》是四库正编所收唯一一部遁甲书，作主底本；《協紀辨方書》卷三十五（乾隆官修）作旁证。两书原文按篇切入
+`qimen/entries/`；画符、念呪、步罡一类行法篇目不收（卷三「玉女反閉訣」以下、卷四全卷），篇名记于条目 meta.skipped。
+
+规则表五张（`qimen/ju.json` 局数、`jiugong.json` 九宫星门、`buju.json` 布局与八神、`sanyuan.json` 三元与置闰、
+`geju.json` 吉凶诸格），每条引文由脚本逐字核对在原文中。局数表自《協紀》阴阳遁歌读出，与《演義》诸算例点明的
+三十二处局数回核全合。`qimen/examples.json` 收《演義》《協紀》排盘算例四十八则、定局判例十五则，tianzhi-core 逐条回放。
+
+两书出入十一处记于 `qimen/collation.json`，要者三条：九星转盘（《演義》）与飞布（《協紀》）两说并存；接气之时《演義》
+主拆补、《協紀》斥为「不可從」；置闰之限两书实同——《協紀》「前遠後近」与《演義》丙戌年芒種之例皆为符头早节八日即闰，
+较今人软件常用的九日早一日。
+
+    python3 tools/qimen_source.py      # 取维基文库录文（缓存于 .cache/，不入库）
+    python3 tools/qimen_extract.py     # 切条
+    python3 tools/qimen_tables.py      # 规则表
+    python3 tools/qimen_examples.py    # 算例
+    python3 tools/qimen_collation.py   # 校勘记
+（各脚本加 --check 只核对不写入）
