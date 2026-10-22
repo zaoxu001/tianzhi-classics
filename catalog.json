@@ -367,7 +367,7 @@
     {
       "key": "qimen",
       "name": "奇门",
-      "ready": false
+      "ready": true
     },
     {
       "key": "ziwei",
